@@ -1,5 +1,7 @@
 from fastapi import FastAPI, UploadFile, File, HTTPException
 from fastapi.responses import FileResponse
+from fastapi.middleware.cors import CORSMiddleware
+
 from PIL import Image
 from PyPDF2 import PdfMerger, PdfReader, PdfWriter
 from pdf2docx import Converter
@@ -17,6 +19,13 @@ app = FastAPI(
     title="PDF Araç Seti API",
     description="PDF dönüştürme, birleştirme ve sıkıştırma işlemleri için API",
     version="1.0.0"
+)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Tüm originlere izin ver
+    allow_credentials=True,
+    allow_methods=["*"],  # Tüm HTTP metodlarına izin ver
+    allow_headers=["*"],  # Tüm headerlara izin ver
 )
 
 # Geçici dosyalar için klasör
