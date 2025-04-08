@@ -249,7 +249,9 @@ async def compress_pdf(
 async def startup_event():
     """Uygulama başladığında geçici dosyaları temizle"""
     cleanup_temp_files()
-
+@app.api_route("/", methods=["GET", "HEAD"])
+async def root():
+    return {"mesaj": "API'ye Hoş Geldiniz "}
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000) 
