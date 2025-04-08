@@ -251,7 +251,7 @@ async def startup_event():
     cleanup_temp_files()
 @app.api_route("/", methods=["GET", "HEAD"])
 async def root():
-    return {"mesaj": "API'ye Hoş Geldiniz "}
+    return {"."}
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000) 
